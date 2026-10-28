@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud-Native Vault | Azure Blob & MongoDB Atlas</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand">
+        <span style="font-size: 28px;">🗄️</span>
+        <span class="brand-font">CloudVault</span>
+        <span class="brand-badge">Azure for Students</span>
+      </div>
+      <div class="nav-actions">
+        <div id="healthBadge" class="badge badge-mint mono">Health: Checking...</div>
+        <div id="userNav" style="display: none; align-items: center; gap: 10px;">
+          <span id="userNameDisplay" class="mono" style="font-weight: 600;"></span>
+          <button id="logoutBtn" class="btn btn-secondary btn-sm">Log out</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Notice Banner -->
+    <div class="notice-banner">
+      <div>
+        <strong>Cloud-Native Architecture:</strong> Node.js Express + Multer Memory + Azure Blob Storage (Private Container + SAS URLs) + MongoDB Atlas M0.
+      </div>
+      <span class="mono badge badge-butter">100% Stateless API</span>
+    </div>
+
+    <!-- KPI Tiles Grid -->
+    <section class="kpi-grid">
+      <div class="kpi-card feature-mint">
+        <span class="kpi-label">Vault Files</span>
+        <div class="kpi-value brand-font" id="kpiFileCount">0</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">User documents & media</span>
+      </div>
+
+      <div class="kpi-card feature-butter">
+        <span class="kpi-label">Total Storage</span>
+        <div class="kpi-value brand-font" id="kpiStorageUsed">0 KB</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Stored in Azure Blob (LRS)</span>
+      </div>
+
+      <div class="kpi-card feature-sky">
+        <span class="kpi-label">Security Model</span>
+        <div class="kpi-value brand-font" style="font-size: 30px;">SAS URLs</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Zero Anonymous Access</span>
+      </div>
+
+      <div class="kpi-card feature-lavender">
+        <span class="kpi-label">Database Tier</span>
+        <div class="kpi-value brand-font" style="font-size: 30px;">Atlas M0</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Free Forever Cluster</span>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-grid">
+      <!-- Left Column: Auth or Upload -->
+      <div>
+        <!-- Auth Card -->
+        <div id="authCard" class="card feature-lavender">
+          <div class="tab-container">
+            <button id="tabLogin" class="tab-btn active">Log In</button>
+            <button id="tabRegister" class="tab-btn">Register</button>
+          </div>
+
+          <form id="authForm">
+            <div class="form-group" id="nameGroup" style="display: none;">
+              <label class="form-label" for="authName">Full Name</label>
+              <input type="text" id="authName" class="input-field" placeholder="Ada Lovelace">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="authEmail">Email Address</label>
+              <input type="email" id="authEmail" class="input-field" placeholder="student@university.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="authPassword">Password</label>
+              <input type="password" id="authPassword" class="input-field" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" id="authSubmitBtn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+              Log In to Vault
+            </button>
+          </form>
+        </div>
+
+        <!-- Upload Card (Visible when authenticated) -->
+        <div id="uploadCard" class="card" style="display: none;">
+          <h2 style="font-size: 22px; margin-bottom: 8px;">Upload Media / Document</h2>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
+            Files are held in memory buffer and streamed directly into Azure Blob Storage.
+          </p>
+
+          <form id="uploadForm">
+            <div id="dropzone" class="dropzone">
+              <div style="font-size: 36px; margin-bottom: 8px;">☁️</div>
+              <p><strong>Click or Drag & Drop file here</strong></p>
+              <p style="font-size: 12px; color: var(--muted); margin-top: 4px;">Max size 10MB (PDF, PNG, JPG, MP4)</p>
+              <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.mp4" style="display: none;" required>
+            </div>
+
+            <div id="selectedFileInfo" style="display: none; margin-bottom: 14px;" class="mono">
+              <span id="selectedFileName"></span> (<span id="selectedFileSize"></span>)
+            </div>
+
+            <button type="submit" id="uploadBtn" class="btn btn-primary" style="width: 100%;" disabled>
+              Upload to Azure Blob
+            </button>
+          </form>
+        </div>
+
+        <!-- System Architecture Defense Card -->
+        <div class="card" style="margin-top: 24px; background: var(--paper);">
+          <h3 style="font-size: 18px; margin-bottom: 10px;">Cloud Viva Highlights</h3>
+          <ul style="font-size: 13px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>Private Container:</strong> Blob storage allows zero anonymous reads.</li>
+            <li><strong>Time-Limited SAS:</strong> Server mints ephemeral 15-minute read signatures.</li>
+            <li><strong>Memory Storage:</strong> Multer avoids container disk writes (12-Factor App).</li>
+            <li><strong>Stateless Auth:</strong> Scalable JWT verification on every request.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column: Vault Files Explorer -->
+      <div>
+        <div class="card" style="min-height: 520px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 26px;">Vault Repository</h2>
+              <p style="font-size: 14px; color: var(--muted);">Secured files with dynamically generated SAS URLs</p>
+            </div>
+            <button id="refreshFilesBtn" class="btn btn-secondary btn-sm">Refresh</button>
+          </div>
+
+          <div id="authPromptPlaceholder" style="text-align: center; padding: 60px 20px;">
+            <div style="font-size: 48px; margin-bottom: 12px;">🔒</div>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Authentication Required</h3>
+            <p style="color: var(--muted); max-width: 400px; margin: 0 auto;">
+              Please log in or register on the left to securely view and upload your vault documents.
+            </p>
+          </div>
+
+          <div id="fileListContainer" class="file-list" style="display: none;">
+            <!-- File rows dynamically populated by app.js -->
+          </div>
+
+          <div id="noFilesPlaceholder" style="display: none; text-align: center; padding: 60px 20px;">
+            <div style="font-size: 48px; margin-bottom: 12px;">📂</div>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">Vault is Empty</h3>
+            <p style="color: var(--muted);">Upload your first document or media file using the upload form.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast">
+    <span id="toastIcon">ℹ️</span>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
