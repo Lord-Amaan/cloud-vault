@@ -4,13 +4,13 @@ A secure personal document and media storage vault built for my Cloud Computing 
 
 Users can register, log in, and upload documents (PDFs), images (PNG/JPG), and videos (MP4). Instead of dumping heavy files onto a server hard drive or choking a database, files are streamed directly into private **Microsoft Azure Blob Storage**, while **MongoDB Atlas** keeps track of user accounts and file metadata.
 
-Live deployment runs inside a **Docker** container on an **Ubuntu Linux Virtual Machine in Microsoft Azure**.
+Live deployment runs inside a **Docker** container on an **Ubuntu Linux Virtual Machine in Microsoft Azure** with an automated **GitHub Actions CI/CD pipeline**.
 
 ---
 
 ## 🚀 Live Demo
 
-- **URL:** [http://projectvault.centralindia.cloudapp.azure.com:5000](http://projectvault.centralindia.cloudapp.azure.com:5000)
+- **Live Web App:** [http://projectvault.centralindia.cloudapp.azure.com:5000](http://projectvault.centralindia.cloudapp.azure.com:5000)
 - **Health Probe:** [http://projectvault.centralindia.cloudapp.azure.com:5000/api/health](http://projectvault.centralindia.cloudapp.azure.com:5000/api/health)
 
 *(Feel free to register an account, upload a test PDF or image, and try generating a secure download link!)*
@@ -50,7 +50,17 @@ Live deployment runs inside a **Docker** container on an **Ubuntu Linux Virtual 
 - **Cloud Storage:** Azure Blob Storage (`@azure/storage-blob`) with private containers & SAS tokens
 - **Auth & Security:** JWT (JSON Web Tokens), `bcryptjs` password hashing, and Helmet headers
 - **Deployment:** Docker, Docker Compose, Linux (Ubuntu 22.04 LTS), Azure Virtual Machine (B-series)
+- **CI/CD:** GitHub Actions automated deployment on push to `main`
 - **Frontend:** Neo-Brutalism + Claymorphism responsive dashboard (Vanilla HTML, CSS, JavaScript)
+
+---
+
+## ⚡ Automated CI/CD Pipeline (GitHub Actions)
+
+This repository includes a continuous deployment workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
+- Whenever changes are pushed to `main`, GitHub Actions triggers automatically.
+- GitHub securely authenticates with the Azure VM via SSH.
+- It pulls the latest code, rebuilds the container, and brings the service back up with zero manual server management.
 
 ---
 
