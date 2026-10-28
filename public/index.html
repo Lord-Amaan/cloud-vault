@@ -11,12 +11,19 @@
     <!-- Navbar -->
     <header class="navbar">
       <div class="brand">
-        <span style="font-size: 28px;">🗄️</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="12" cy="12" r="3"/>
+          <line x1="12" y1="9" x2="12" y2="6"/>
+          <line x1="12" y1="18" x2="12" y2="15"/>
+          <line x1="9" y1="12" x2="6" y2="12"/>
+          <line x1="18" y1="12" x2="15" y2="12"/>
+        </svg>
         <span class="brand-font">CloudVault</span>
-        <span class="brand-badge">Encrypted Cloud</span>
+        <span class="brand-badge">Encrypted</span>
       </div>
       <div class="nav-actions">
-        <div id="healthBadge" class="badge badge-mint mono">Health: Checking...</div>
+        <div id="healthBadge" class="badge badge-mint mono">System: Online</div>
         <div id="userNav" style="display: none; align-items: center; gap: 10px;">
           <span id="userNameDisplay" class="mono" style="font-weight: 600;"></span>
           <button id="logoutBtn" class="btn btn-secondary btn-sm">Log out</button>
@@ -29,31 +36,31 @@
       <div>
         <strong>Private Cloud Storage:</strong> High-performance object storage with zero-knowledge access controls and instant streaming.
       </div>
-      <span class="mono badge badge-butter">End-to-End Private</span>
+      <span class="mono badge badge-butter">Private Tier</span>
     </div>
 
     <!-- KPI Tiles Grid -->
     <section class="kpi-grid">
       <div class="kpi-card feature-mint">
-        <span class="kpi-label">Vault Files</span>
+        <span class="kpi-label">Stored Objects</span>
         <div class="kpi-value brand-font" id="kpiFileCount">0</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Stored documents & media</span>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">User documents & media</span>
       </div>
 
       <div class="kpi-card feature-butter">
-        <span class="kpi-label">Storage Used</span>
+        <span class="kpi-label">Storage Consumed</span>
         <div class="kpi-value brand-font" id="kpiStorageUsed">0 KB</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">High-Durability Cloud Objects</span>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">High-Durability Cloud Tier</span>
       </div>
 
       <div class="kpi-card feature-sky">
-        <span class="kpi-label">Access Control</span>
+        <span class="kpi-label">Access Model</span>
         <div class="kpi-value brand-font" style="font-size: 30px;">SAS Tokens</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Time-Limited Signatures</span>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Ephemeral Signatures</span>
       </div>
 
       <div class="kpi-card feature-lavender">
-        <span class="kpi-label">Data Security</span>
+        <span class="kpi-label">Cipher Engine</span>
         <div class="kpi-value brand-font" style="font-size: 30px;">AES-256</div>
         <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">At-Rest & In-Transit</span>
       </div>
@@ -96,12 +103,16 @@
         <div id="uploadCard" class="card" style="display: none;">
           <h2 style="font-size: 22px; margin-bottom: 8px;">Upload Media / Document</h2>
           <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
-            Files are held in memory buffer and streamed directly into private cloud storage.
+            Files are streamed directly into private cloud storage from memory buffer.
           </p>
 
           <form id="uploadForm">
             <div id="dropzone" class="dropzone">
-              <div style="font-size: 36px; margin-bottom: 8px;">☁️</div>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
               <p><strong>Click or Drag & Drop file here</strong></p>
               <p style="font-size: 12px; color: var(--muted); margin-top: 4px;">Max size 10MB (PDF, PNG, JPG, MP4)</p>
               <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.mp4" style="display: none;" required>
@@ -117,9 +128,9 @@
           </form>
         </div>
 
-        <!-- Security & Privacy Guarantee Card -->
+        <!-- Security & Privacy Architecture Card -->
         <div class="card" style="margin-top: 24px; background: var(--paper);">
-          <h3 style="font-size: 18px; margin-bottom: 10px;">Security & Privacy Architecture</h3>
+          <h3 style="font-size: 18px; margin-bottom: 10px;">Security Specifications</h3>
           <ul style="font-size: 13px; line-height: 1.6; padding-left: 18px;">
             <li><strong>Zero Anonymous Access:</strong> Storage containers are fully private and unlisted.</li>
             <li><strong>Self-Expiring Links:</strong> Temporary 10-minute download signatures prevent URL leaks.</li>
@@ -141,7 +152,10 @@
           </div>
 
           <div id="authPromptPlaceholder" style="text-align: center; padding: 60px 20px;">
-            <div style="font-size: 48px; margin-bottom: 12px;">🔒</div>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; opacity: 0.7;">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
             <h3 style="font-size: 20px; margin-bottom: 8px;">Authentication Required</h3>
             <p style="color: var(--muted); max-width: 400px; margin: 0 auto;">
               Please log in or register on the left to securely view and upload your vault documents.
@@ -153,7 +167,9 @@
           </div>
 
           <div id="noFilesPlaceholder" style="display: none; text-align: center; padding: 60px 20px;">
-            <div style="font-size: 48px; margin-bottom: 12px;">📂</div>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; opacity: 0.7;">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
             <h3 style="font-size: 20px; margin-bottom: 8px;">Vault is Empty</h3>
             <p style="color: var(--muted);">Upload your first document or media file using the upload form.</p>
           </div>
@@ -164,7 +180,6 @@
 
   <!-- Notification Toast -->
   <div id="toast" class="toast">
-    <span id="toastIcon">ℹ️</span>
     <span id="toastMessage">Notification message</span>
   </div>
 

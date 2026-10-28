@@ -47,7 +47,6 @@ const toastIcon = document.getElementById('toastIcon');
 // Helper: Show Toast
 function showToast(message, isError = false) {
   toastMessage.textContent = message;
-  toastIcon.textContent = isError ? '❌' : '✅';
   toast.style.borderColor = isError ? 'var(--danger)' : 'var(--ink)';
   toast.style.display = 'flex';
   setTimeout(() => {
@@ -70,14 +69,14 @@ async function checkHealth() {
     const res = await fetch('/api/health');
     const data = await res.json();
     if (data.status === 'UP') {
-      healthBadge.textContent = '● Cloud Online';
+      healthBadge.textContent = 'System: Online';
       healthBadge.className = 'badge badge-mint mono';
     } else {
-      healthBadge.textContent = `▲ ${data.status}`;
+      healthBadge.textContent = `Status: ${data.status}`;
       healthBadge.className = 'badge badge-butter mono';
     }
   } catch (err) {
-    healthBadge.textContent = '✕ Server Offline';
+    healthBadge.textContent = 'System: Offline';
     healthBadge.className = 'badge badge-coral mono';
   }
 }
@@ -305,16 +304,16 @@ function renderFileList(files) {
       </div>
       <div class="file-actions">
         <button class="btn btn-secondary btn-sm" onclick="openSasView('${file._id}', false)">
-          👁️ View
+          View
         </button>
         <button class="btn btn-secondary btn-sm" onclick="openSasView('${file._id}', true)">
-          ⬇️ Download
+          Download
         </button>
-        <button class="btn btn-secondary btn-sm" onclick="copySasLink('${file._id}')" title="Copy 15-minute SAS URL">
-          🔗 Link
+        <button class="btn btn-secondary btn-sm" onclick="copySasLink('${file._id}')" title="Copy 10-minute secure link">
+          Copy Link
         </button>
         <button class="btn btn-danger btn-sm" onclick="deleteVaultFile('${file._id}')">
-          🗑️
+          Delete
         </button>
       </div>
     `;
