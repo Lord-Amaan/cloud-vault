@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud-Native Vault | Azure Blob & MongoDB Atlas</title>
+  <title>CloudVault | Secure Cloud Media & Document Storage</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
       <div class="brand">
         <span style="font-size: 28px;">🗄️</span>
         <span class="brand-font">CloudVault</span>
-        <span class="brand-badge">Azure for Students</span>
+        <span class="brand-badge">Encrypted Cloud</span>
       </div>
       <div class="nav-actions">
         <div id="healthBadge" class="badge badge-mint mono">Health: Checking...</div>
@@ -27,9 +27,9 @@
     <!-- Notice Banner -->
     <div class="notice-banner">
       <div>
-        <strong>Cloud-Native Architecture:</strong> Node.js Express + Multer Memory + Azure Blob Storage (Private Container + SAS URLs) + MongoDB Atlas M0.
+        <strong>Private Cloud Storage:</strong> High-performance object storage with zero-knowledge access controls and instant streaming.
       </div>
-      <span class="mono badge badge-butter">100% Stateless API</span>
+      <span class="mono badge badge-butter">End-to-End Private</span>
     </div>
 
     <!-- KPI Tiles Grid -->
@@ -37,25 +37,25 @@
       <div class="kpi-card feature-mint">
         <span class="kpi-label">Vault Files</span>
         <div class="kpi-value brand-font" id="kpiFileCount">0</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">User documents & media</span>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Stored documents & media</span>
       </div>
 
       <div class="kpi-card feature-butter">
-        <span class="kpi-label">Total Storage</span>
+        <span class="kpi-label">Storage Used</span>
         <div class="kpi-value brand-font" id="kpiStorageUsed">0 KB</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Stored in Azure Blob (LRS)</span>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">High-Durability Cloud Objects</span>
       </div>
 
       <div class="kpi-card feature-sky">
-        <span class="kpi-label">Security Model</span>
-        <div class="kpi-value brand-font" style="font-size: 30px;">SAS URLs</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Zero Anonymous Access</span>
+        <span class="kpi-label">Access Control</span>
+        <div class="kpi-value brand-font" style="font-size: 30px;">SAS Tokens</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Time-Limited Signatures</span>
       </div>
 
       <div class="kpi-card feature-lavender">
-        <span class="kpi-label">Database Tier</span>
-        <div class="kpi-value brand-font" style="font-size: 30px;">Atlas M0</div>
-        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">Free Forever Cluster</span>
+        <span class="kpi-label">Data Security</span>
+        <div class="kpi-value brand-font" style="font-size: 30px;">AES-256</div>
+        <span style="font-size: 13px; font-weight: 500; margin-top: 4px;">At-Rest & In-Transit</span>
       </div>
     </section>
 
@@ -73,12 +73,12 @@
           <form id="authForm">
             <div class="form-group" id="nameGroup" style="display: none;">
               <label class="form-label" for="authName">Full Name</label>
-              <input type="text" id="authName" class="input-field" placeholder="Ada Lovelace">
+              <input type="text" id="authName" class="input-field" placeholder="Alex Morgan">
             </div>
 
             <div class="form-group">
               <label class="form-label" for="authEmail">Email Address</label>
-              <input type="email" id="authEmail" class="input-field" placeholder="student@university.edu" required>
+              <input type="email" id="authEmail" class="input-field" placeholder="alex@example.com" required>
             </div>
 
             <div class="form-group">
@@ -96,7 +96,7 @@
         <div id="uploadCard" class="card" style="display: none;">
           <h2 style="font-size: 22px; margin-bottom: 8px;">Upload Media / Document</h2>
           <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
-            Files are held in memory buffer and streamed directly into Azure Blob Storage.
+            Files are held in memory buffer and streamed directly into private cloud storage.
           </p>
 
           <form id="uploadForm">
@@ -112,19 +112,19 @@
             </div>
 
             <button type="submit" id="uploadBtn" class="btn btn-primary" style="width: 100%;" disabled>
-              Upload to Azure Blob
+              Upload to Vault
             </button>
           </form>
         </div>
 
-        <!-- System Architecture Defense Card -->
+        <!-- Security & Privacy Guarantee Card -->
         <div class="card" style="margin-top: 24px; background: var(--paper);">
-          <h3 style="font-size: 18px; margin-bottom: 10px;">Cloud Viva Highlights</h3>
+          <h3 style="font-size: 18px; margin-bottom: 10px;">Security & Privacy Architecture</h3>
           <ul style="font-size: 13px; line-height: 1.6; padding-left: 18px;">
-            <li><strong>Private Container:</strong> Blob storage allows zero anonymous reads.</li>
-            <li><strong>Time-Limited SAS:</strong> Server mints ephemeral 15-minute read signatures.</li>
-            <li><strong>Memory Storage:</strong> Multer avoids container disk writes (12-Factor App).</li>
-            <li><strong>Stateless Auth:</strong> Scalable JWT verification on every request.</li>
+            <li><strong>Zero Anonymous Access:</strong> Storage containers are fully private and unlisted.</li>
+            <li><strong>Self-Expiring Links:</strong> Temporary 10-minute download signatures prevent URL leaks.</li>
+            <li><strong>In-Memory Streaming:</strong> Uploads bypass local server disks to eliminate residual file traces.</li>
+            <li><strong>Tenant Isolation:</strong> Authenticated JWT verification ensures strict personal file ownership.</li>
           </ul>
         </div>
       </div>
@@ -135,7 +135,7 @@
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
             <div>
               <h2 style="font-size: 26px;">Vault Repository</h2>
-              <p style="font-size: 14px; color: var(--muted);">Secured files with dynamically generated SAS URLs</p>
+              <p style="font-size: 14px; color: var(--muted);">Encrypted documents and media with secure expiring links</p>
             </div>
             <button id="refreshFilesBtn" class="btn btn-secondary btn-sm">Refresh</button>
           </div>
